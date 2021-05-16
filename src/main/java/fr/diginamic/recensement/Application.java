@@ -2,6 +2,8 @@ package fr.diginamic.recensement;
 
 import java.util.Scanner;
 
+import fr.diginamic.exception.ComparaisonNumberException;
+import fr.diginamic.exception.NotNumberException;
 import fr.diginamic.recensement.entites.Recensement;
 import fr.diginamic.recensement.services.RechercheDepartementsPlusPeuplees;
 import fr.diginamic.recensement.services.RecherchePopulationBorneService;
@@ -66,7 +68,15 @@ public class Application {
 				break;
 			case 4:
 				RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
-				recherchePopBorne.traiter(recensement, scanner);
+				try {
+					recherchePopBorne.traiter(recensement, scanner);
+				} catch (NotNumberException e) {
+					
+					System.out.println(e.getMessage());
+				} catch (ComparaisonNumberException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				break;
 			case 5:
 				RechercheVillesPlusPeupleesDepartement rechercheVillesPlusPeupleesDepartement = new RechercheVillesPlusPeupleesDepartement();

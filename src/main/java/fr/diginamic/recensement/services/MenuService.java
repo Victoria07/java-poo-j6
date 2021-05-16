@@ -2,6 +2,8 @@ package fr.diginamic.recensement.services;
 
 import java.util.Scanner;
 
+import fr.diginamic.exception.ComparaisonNumberException;
+import fr.diginamic.exception.NotNumberException;
 import fr.diginamic.recensement.entites.Recensement;
 
 /**
@@ -19,5 +21,5 @@ public abstract class MenuService {
 	 * @param lignes  lignes du fichier
 	 * @param scanner scanner
 	 */
-	public abstract void traiter(Recensement recensement, Scanner scanner);
+	public abstract void traiter(Recensement recensement, Scanner scanner) throws NotNumberException, ComparaisonNumberException;
 }
